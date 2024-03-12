@@ -18,6 +18,7 @@
 		645435E32BA11B4200F7D519 /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 645435E22BA11B4200F7D519 /* OpenAPIRuntime */; };
 		645435E82BA11BDE00F7D519 /* openapi.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 645435E62BA11BBB00F7D519 /* openapi.yaml */; };
 		645435EA2BA11CE700F7D519 /* openapi-generator-config.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 645435E92BA11CE700F7D519 /* openapi-generator-config.yaml */; };
+		645435EC2BA11DBD00F7D519 /* NearestStationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645435EB2BA11DBD00F7D519 /* NearestStationsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		6443AF292BA118ED00FB66B3 /* TravelScheduleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelScheduleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		645435E62BA11BBB00F7D519 /* openapi.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = openapi.yaml; sourceTree = "<group>"; };
 		645435E92BA11CE700F7D519 /* openapi-generator-config.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "openapi-generator-config.yaml"; sourceTree = "<group>"; };
+		645435EB2BA11DBD00F7D519 /* NearestStationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestStationsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				6443AF0B2BA118EA00FB66B3 /* TravelScheduleApp.swift */,
+				645435EB2BA11DBD00F7D519 /* NearestStationsService.swift */,
 				6443AF0D2BA118EA00FB66B3 /* ContentView.swift */,
 				645435E62BA11BBB00F7D519 /* openapi.yaml */,
 				645435E92BA11CE700F7D519 /* openapi-generator-config.yaml */,
@@ -282,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6443AF0E2BA118EA00FB66B3 /* ContentView.swift in Sources */,
+				645435EC2BA11DBD00F7D519 /* NearestStationsService.swift in Sources */,
 				6443AF0C2BA118EA00FB66B3 /* TravelScheduleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
