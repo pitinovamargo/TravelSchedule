@@ -5,9 +5,6 @@ info:
   version: 3.0.0
 servers:
 - url: https://api.rasp.yandex.net
-tags:
-- name: Список ближайших станций
-  description: Список ближайших станций
 paths:
   /v3.0/nearest_stations/:
     get:
@@ -59,66 +56,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Stations'
-components:
-  schemas:
-    Stations:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        stations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Station'
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-        limit:
-          type: integer
-        offset:
-          type: integer
-    Station:
-      type: object
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        short_title:
-          type: string
-        popular_title:
-          type: string
-        code:
-          type: string
-        lat:
-          type: number
-        lng:
-          type: number
-        station_type:
-          type: string
-        station_type_name:
-          type: string
-        transport_type:
-          type: string
-        distance:
-          type: number
-        majority:
-          type: integer
-        type_choices:
-          $ref: '#/components/schemas/Schedule'
-    Schedule:
-      type: object
-      properties:
-        desktop_url:
-          type: string
-        touch_url:
-          type: string
-tags:
-- name: Расписание рейсов между станциями
-  description: Расписание рейсов между станциями
-paths:
   /v3.0/search/:
     get:
       tags:
@@ -218,8 +155,98 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Intervals'
+  /v3.0/schedule/:
+    get:
+      tags:
+      - getSchedule
+      summary: Расписание рейсов по станции
+      operationId: getSchedule
+      parameters:
+      - name: apikey
+        in: query
+        description: API key
+        required: true
+        schema:
+          type: string
+      - name: station
+        in: query
+        description: код станции
+        required: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json или xml
+        required: false
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: язык
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: дата
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: transport_types
+        in: query
+        description: тип транспорта
+        required: false
+        schema:
+          type: string
+      - name: event
+        in: query
+        description: прибытие или отправление
+        required: false
+        schema:
+          type: string
+      - name: system
+        in: query
+        description: код to и from
+        required: false
+        schema:
+          type: string
+      - name: show_systems
+        in: query
+        description: код ответа
+        required: false
+        schema:
+          type: string
+      - name: direction
+        in: query
+        description: направление
+        required: false
+        schema:
+          type: string
+      - name: result_timezone
+        in: query
+        description: часовой пояс
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduleStation'
 components:
   schemas:
+    Stations:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        stations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Station'
     Intervals:
       type: object
       properties:
@@ -545,3 +572,91 @@ components:
               type: string
             title:
               type: string
+        from:
+          type: object
+          properties:
+            code:
+              type: string
+            type:
+              type: string
+            popular_title:
+              type: string
+            short_title:
+              type: string
+            title:
+              type: string
+    ScheduleStation:
+      type: object
+      properties:
+        date:
+          type: string
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        station:
+          $ref: '#/components/schemas/Station'
+        schedule:
+          type: array
+          items:
+            $ref: '#/components/schemas/Schedule'
+        interval_schedule:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntervalSchedule'
+        schedule_direction:
+          type: object
+          properties:
+            code:
+              type: string
+            title:
+              type: string
+        directions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Direction'
+    Station:
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        short_title:
+          type: string
+        popular_title:
+          type: string
+        code:
+          type: string
+        lat:
+          type: number
+        lng:
+          type: number
+        station_type:
+          type: string
+        station_type_name:
+          type: string
+        transport_type:
+          type: string
+        distance:
+          type: number
+        majority:
+          type: integer
+        type_choices:
+          $ref: '#/components/schemas/Schedule'
+    Schedule:
+      type: object
+      properties:
+        desktop_url:
+          type: string
+        touch_url:
+          type: string
+    IntervalSchedule:
+      type: object
+      properties:
+        code:
+          type: string
+    Direction:
+      type: object
+      properties:
+        code:
+          type: string
+    
