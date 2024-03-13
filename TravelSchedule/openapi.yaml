@@ -229,14 +229,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Interval'
-        segment:
+        segments:
           type: array
           items:
             $ref: '#/components/schemas/Segment'
         search:
-          type: object
-          items:
-            $ref: '#/components/schemas/Search'
+          $ref: '#/components/schemas/Search'
     Pagination:
       type: object
       properties:
@@ -397,3 +395,153 @@ components:
               type: integer
         name:
           type: string
+    Segment:
+      type: object
+      properties:
+        arrival:
+          type: string
+        from:
+          type: object
+          properties:
+            code:
+              type: string
+            title:
+              type: string
+            popular_title:
+              type: string
+            short_title:
+              type: string
+            transport_type:
+              type: string
+            type:
+              type: string
+            station_type:
+              type: string
+            station_type_name:
+              type: string
+        thread:
+          type: object
+          properties:
+            uid:
+              type: string
+            title:
+              type: string
+            number:
+              type: string
+            short_title:
+              type: string
+            thread_method_link:
+              type: string
+            carrier:
+              type: object
+              properties:
+                code:
+                  type: integer
+                contacts:
+                  type: string
+                url:
+                  type: string
+                logo_svg:
+                  type: string
+                  nullable: true
+                title:
+                  type: string
+                phone:
+                  type: string
+                codes:
+                  type: object
+                  properties:
+                    icao:
+                      type: string
+                      nullable: true
+                    sirena:
+                      type: string
+                    iata:
+                      type: string
+                address:
+                  type: string
+                logo:
+                  type: string
+                email:
+                  type: string
+            transport_type:
+              type: string
+            vehicle:
+              type: string
+            transport_subtype:
+              type: object
+              properties:
+                color:
+                  type: string
+                code:
+                  type: string
+                title:
+                  type: string
+            exspress_type:
+              type: string
+              nullable: true
+        departure_platform:
+          type: string
+        departure:
+          type: string
+        stops:
+          type: string
+        departure_terminal:
+          type: string
+          nullable: true
+        to:
+          type: object
+          properties:
+            code:
+              type: string
+            title:
+              type: string
+            popular_title:
+              type: string
+            short_title:
+              type: string
+            transport_type:
+              type: string
+            type:
+              type: string
+            station_type:
+              type: string
+            station_type_name:
+              type: string
+        has_transfers:
+          type: boolean
+        tickets_info:
+          type: object
+          properties:
+            et_marker:
+              type: boolean
+            places:
+              type: array
+              items:
+                $ref: '#/components/schemas/Place'
+        duration:
+          type: integer
+        arrival_terminal:
+          type: string
+        start_date:
+          type: string
+        arrival_platform:
+          type: string
+    Search:
+      type: object
+      properties:
+        date:
+          type: string
+        to:
+          type: object
+          properties:
+            code:
+              type: string
+            type:
+              type: string
+            popular_title:
+              type: string
+            short_title:
+              type: string
+            title:
+              type: string
