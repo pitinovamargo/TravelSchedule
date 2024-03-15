@@ -597,7 +597,7 @@ components:
         schedule:
           type: array
           items:
-            $ref: '#/components/schemas/Schedule'
+            $ref: '#/components/schemas/StationSchedule'
         interval_schedule:
           type: array
           items:
@@ -649,14 +649,132 @@ components:
           type: string
         touch_url:
           type: string
+    StationSchedule:
+      type: object
+      properties:
+        exept_days:
+          type: string
+        arrival:
+          type: string
+        thread:
+          type: object
+          properties:
+            uid:
+              type: string
+            title:
+              type: string
+            number:
+              type: string
+            short_title:
+              type: string
+            carrier:
+              type: object
+              properties:
+                code:
+                  type: integer
+                codes:
+                  type: object
+                  properties:
+                    icao:
+                      type: string
+                      nullable: true
+                    sirena:
+                      type: string
+                      nullable: true
+                    iata:
+                      type: string
+                      nullable: true
+                title:
+                  type: string
+            transport_type:
+              type: string
+            vehicle:
+              type: string
+              nullable: true
+            transport_subtype:
+              type: object
+              properties:
+                color:
+                  type: string
+                code:
+                  type: string
+                title:
+                  type: string
+            express_type:
+              type: string
+        is_fuzzy:
+          type: boolean
+        days:
+          type: string
+        stops:
+          type: string
+        departure:
+          type: string
+        terminal:
+          type: boolean
+        platform:
+          type: string
     IntervalSchedule:
       type: object
       properties:
-        code:
+        except_days:
+          type: boolean
+        thread:
+          type: object
+          properties:
+            uid:
+              type: string
+            title:
+              type: string
+            interval:
+              type: object
+              properties:
+                destiny:
+                  type: string
+                end_time:
+                  type: string
+                begin_time:
+                  type: string
+            number:
+              type: string
+            short_title:
+              type: string
+            carrier:
+              type: string
+              nullable: true
+            transport_type:
+              type: string
+            vehicle:
+              type: string
+              nullable: true
+            transport_subtype:
+              type: object
+              properties:
+                color:
+                  type: string
+                code:
+                  type: string
+                title:
+                  type: string
+            express_type:
+              type: string
+              nullable: true
+        is_fuzzy:
+          type: boolean
+        days:
+          type: string
+        stops:
+          type: string
+        terminal:
+          type: string
+          nullable: true
+        platform:
           type: string
     Direction:
       type: object
       properties:
         code:
+          type: string
+        title:
           type: string
     
