@@ -299,6 +299,56 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StationsRoute'
+  /v3.0/nearest_settlement/:
+    get:
+      tags:
+      - getNearestSettlement
+      summary: Ближайший город
+      operationId: getNearestSettlement
+      parameters:
+      - name: apikey
+        in: query
+        description: API key
+        required: true
+        schema:
+          type: string
+      - name: lat
+        in: query
+        description: широта
+        required: true
+        schema:
+          type: string
+      - name: lng
+        in: query
+        description: долгота
+        required: true
+        schema:
+          type: string
+      - name: distance
+        in: query
+        description: радиус охвата
+        required: false
+        schema:
+          type: number
+      - name: format
+        in: query
+        description: json или xml
+        required: false
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: язык
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settlement'
 components:
   schemas:
     Stations:
@@ -965,6 +1015,25 @@ components:
           nullable: true
         duration:
           type: number
+    Settlement:
+      type: object
+      properties:
+        distance:
+          type: number
+        code:
+          type: string
+        title:
+          type: string
+        popular_title:
+          type: string
+        short_title:
+          type: string
+        lat:
+          type: number
+        lng:
+          type: number
+        type:
+          type: string
         
         
         
