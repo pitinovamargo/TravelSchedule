@@ -393,6 +393,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Carriers'
+  /v3.0/stations_list/:
+    get:
+      tags:
+      - getStationsList
+      summary: Все доступные станции
+      operationId: getStationsList
+      parameters:
+      - name: apikey
+        in: query
+        description: API key
+        required: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json или xml
+        required: false
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: язык
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StationsList'
 components:
   schemas:
     Stations:
@@ -1112,6 +1144,77 @@ components:
           type: string
         email:
           type: string
+    StationsList:
+      type: object
+      properties:
+        countries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Country'
+    Country:
+      type: object
+      properties:
+        regions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Region'
+        codes:
+          type: object
+          properties:
+            yandex_code:
+              type: string
+        title:
+          type: string
+    Region:
+      type: object
+      properties:
+        settlements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Settlements'
+        codes:
+          type: object
+        title:
+          type: string
+    Settlements:
+      type: array
+      items:
+        $ref: '#/components/schemas/OneSettlement'
+    OneSettlement:
+      type: object
+      properties:
+        title:
+          type: string
+        codes:
+          type: object
+          properties:
+            yandex_code:
+              type: string
+        stations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OneStation'
+    OneStation:
+      type: object
+      properties:
+        direction:
+          type: string
+        codes:
+          type: object
+          properties:
+            yandex_code:
+              type: string
+        station_type:
+          type: string
+        title:
+          type: string
+        longitude:
+          type: number
+        transport_type:
+          type: string
+        latitude:
+          type: number
+            
 
         
         
