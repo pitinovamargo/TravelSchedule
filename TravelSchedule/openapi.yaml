@@ -236,12 +236,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScheduleStation'
-  /v3.0/stations_route/:
+  /v3.0/thread/:
     get:
       tags:
-      - getStationsRoute
+      - getThread
       summary: Список станций следования
-      operationId: getStationsRoute
+      operationId: getThread
       parameters:
       - name: apikey
         in: query
@@ -298,7 +298,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StationsRoute'
+                $ref: '#/components/schemas/Thread'
   /v3.0/nearest_settlement/:
     get:
       tags:
@@ -349,6 +349,50 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Settlement'
+  /v3.0/carrier/:
+    get:
+      tags:
+      - getCarrier
+      summary: Информация о перевозчике
+      operationId: getCarrier
+      parameters:
+      - name: apikey
+        in: query
+        description: API key
+        required: true
+        schema:
+          type: string
+      - name: code
+        in: query
+        description: код перевозчика
+        required: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json или xml
+        required: false
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: язык
+        required: false
+        schema:
+          type: string
+      - name: system
+        in: query
+        description: текущая система кодирования
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Carriers'
 components:
   schemas:
     Stations:
@@ -890,7 +934,7 @@ components:
           type: string
         title:
           type: string
-    StationsRoute:
+    Thread:
       type: object
       properties:
         except_days:
@@ -1034,6 +1078,41 @@ components:
           type: number
         type:
           type: string
+    Carriers:
+      type: array
+      items:
+        $ref: '#/components/schemas/Carrier'
+    Carrier:
+      type: object
+      properties:
+        code:
+          type: integer
+        contacts:
+          type: string
+        url:
+          type: string
+        title:
+          type: string
+        phone:
+          type: string
+        codes:
+          type: object
+          properties:
+            icao:
+              type: string
+              nullable: true
+            sirena:
+              type: string
+              nullable: true
+            iata:
+              type: string
+        address:
+          type: string
+        logo:
+          type: string
+        email:
+          type: string
+
         
         
         
