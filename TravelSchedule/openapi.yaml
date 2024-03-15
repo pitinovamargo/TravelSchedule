@@ -236,6 +236,69 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScheduleStation'
+  /v3.0/stations_route/:
+    get:
+      tags:
+      - getStationsRoute
+      summary: Список станций следования
+      operationId: getStationsRoute
+      parameters:
+      - name: apikey
+        in: query
+        description: API key
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: query
+        description: идентификатор нитки
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        description: станция отправления
+        required: false
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: станция прибытия
+        required: false
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json или xml
+        required: false
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: язык
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: дата
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: show_systems
+        in: query
+        description: код ответа
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StationsRoute'
 components:
   schemas:
     Stations:
@@ -729,7 +792,7 @@ components:
             interval:
               type: object
               properties:
-                destiny:
+                density:
                   type: string
                 end_time:
                   type: string
@@ -777,4 +840,143 @@ components:
           type: string
         title:
           type: string
+    StationsRoute:
+      type: object
+      properties:
+        except_days:
+          type: string
+        arrival_date:
+          type: string
+          nullable: true
+        from:
+          type: string
+          nullable: true
+        uid:
+          type: string
+        title:
+          type: string
+        interval:
+          type: object
+          properties:
+            density:
+              type: string
+            end_time:
+              type: string
+            begin_time:
+              type: string
+        departure_date:
+          type: string
+          nullable: true
+        start_time:
+          type: string
+        number:
+          type: string
+        short_title:
+          type: string
+        days:
+          type: string
+        to:
+          type: string
+          nullable: true
+        carrier:
+          type: object
+          properties:
+            code:
+              type: integer
+            offices:
+              type: array
+              items:
+                type: string
+              maxItems: 0
+            codes:
+              type: object
+              properties:
+                icao:
+                  type: string
+                  nullable: true
+                sirena:
+                  type: string
+                  nullable: true
+                iata:
+                  type: string
+                  nullable: true
+            title:
+              type: string
+        transport_type:
+          type: string
+        stops:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stops'
+        vehicle:
+          type: string
+          nullable: true
+        start_date:
+          type: string
+        transport_subtitle:
+          type: object
+          properties:
+            color:
+              type: string
+            code:
+              type: string
+            transport_subtitle:
+              type: string
+        express_type:
+          type: string
+          nullable: true
+    Stops:
+      type: object
+      properties:
+        arrival:
+          type: string
+          nullable: true
+        departure:
+          type: string
+        terminal:
+          type: string
+          nullable: true
+        platform:
+          type: string
+        station:
+          type: object
+          properties:
+            codes:
+              type: object
+              properties:
+                express:
+                  type: string
+                yandex:
+                  type: string
+                esr:
+                  type: string
+            title:
+              type: string
+            popular_title:
+              type: string
+            short_title:
+              type: string
+            code:
+              type: string
+            type:
+              type: string
+        stop_time:
+          type: string
+          nullable: true
+        duration:
+          type: number
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
