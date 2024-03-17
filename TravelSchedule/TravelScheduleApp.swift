@@ -30,20 +30,23 @@ struct TravelScheduleApp: App {
             serverURL: try Servers.server1(),
             transport: URLSessionTransport()
         )
+        let key = ""
         
-        let service = NearestStationsService(
+        // Получаем список ближайших станций
+        let nearestStationsService = NearestStationsService(
             client: client,
-            apikey: "be2379d2-f005-46e5-ac6b-e0ecd14ad366"
+            apikey: key
         )
         
         Task {
-            let stations = try await service.getNearestStations(lat: 59.864177, lng: 30.319163, distance: 50)
+            let stations = try await nearestStationsService.getNearestStations(lat: 59.864177, lng: 30.319163, distance: 50)
             print("Stations: \(stations)")
         }
         
+        // Получаем расписание рейсов между станциями
         let searchService = SearchService(
             client: client,
-            apikey: "be2379d2-f005-46e5-ac6b-e0ecd14ad366"
+            apikey: key
         )
         
         Task {
@@ -51,10 +54,10 @@ struct TravelScheduleApp: App {
             print("Search: \(search)")
         }
         
-        //404
+        // Получаем расписание рейсов по станции
         let scheduleService = ScheduleService(
             client: client,
-            apikey: "be2379d2-f005-46e5-ac6b-e0ecd14ad366"
+            apikey: key
         )
         
         Task {
@@ -63,21 +66,21 @@ struct TravelScheduleApp: App {
             print("Schedule: \(schedule)")
         }
         
-        //404
+        // Получаем список станций следования
         let threadService = ThreadService(
             client: client,
-            apikey: "be2379d2-f005-46e5-ac6b-e0ecd14ad366"
+            apikey: key
         )
         
         Task {
-            let thread = try await threadService.getThread(uid: "038AA_tis")
+            let thread = try await threadService.getThread(uid: "092S_0_2")
             print("Thread: \(thread)")
         }
         
-        
+        // Получаем ближайший город
         let nearestSettlementService = NearestSettlementService(
             client: client,
-            apikey: "be2379d2-f005-46e5-ac6b-e0ecd14ad366"
+            apikey: key
         )
         
         Task {
@@ -85,23 +88,21 @@ struct TravelScheduleApp: App {
             print("Nearest settlement: \(settlement)")
         }
         
-        //404
+        // Получаем информацию о перевозчике
         let carrierService = CarrierService(
             client: client,
-            apikey: "be2379d2-f005-46e5-ac6b-e0ecd14ad366"
+            apikey: key
         )
         
         Task {
-            let carrier = try await carrierService.getCarrier(code: "TK")
+            let carrier = try await carrierService.getCarrier(code: 680)
             print("Carrier: \(carrier)")
         }
         
-        
-        
-        //404
+        // Получаем список всех доступных станций
         let stationsListService = StationsListService(
             client: client,
-            apikey: "be2379d2-f005-46e5-ac6b-e0ecd14ad366"
+            apikey: key
         )
         
         Task {
@@ -109,10 +110,10 @@ struct TravelScheduleApp: App {
             print("Stations list: \(stationsList)")
         }
         
-        
+        // Получаем копирайт Яндекс Расписаний
         let copyrightService = CopyrightService(
             client: client,
-            apikey: "be2379d2-f005-46e5-ac6b-e0ecd14ad366"
+            apikey: key
         )
         
         Task {

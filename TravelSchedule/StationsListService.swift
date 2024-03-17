@@ -7,6 +7,7 @@
 
 import OpenAPIRuntime
 import OpenAPIURLSession
+import Foundation
 
 typealias StationsList = Components.Schemas.StationsList
 
@@ -24,10 +25,13 @@ final class StationsListService: StationsListServiceProtocol {
   }
   
   func getStationsList() async throws -> StationsList {
-
-    let response = try await client.getStationsList(query: .init(
-        apikey: apikey
-    ))
-    return try response.ok.body.json
+      let response = try await client.getStationsList(query: .init(
+          apikey: apikey
+      ))
+      let body = try response.ok.body.html
+      let data = try await Data(collecting: body, upTo: 100 * 1024 * 1024)
+      print(data)
+      let stationsList = try JSONDecoder().decode(StationsList.self, from: data)
+      return stationsList
   }
 }
