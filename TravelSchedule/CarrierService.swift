@@ -1,5 +1,5 @@
 //
-//  ThreadService.swift
+//  CarrierService.swift
 //  TravelSchedule
 //
 //  Created by Margarita Pitinova on 17.03.2024.
@@ -8,13 +8,13 @@
 import OpenAPIRuntime
 import OpenAPIURLSession
 
-typealias Threadd = Components.Schemas.Thread
+typealias Carrier = Components.Schemas.Carriers
 
-protocol ThreadServiceProtocol {
-    func getThread(uid: String) async throws -> Threadd
+protocol CarrierServiceProtocol {
+    func getCarrier(code: String) async throws -> Carrier
 }
 
-final class ThreadService: ThreadServiceProtocol {
+final class CarrierService: CarrierServiceProtocol {
   private let client: Client
   private let apikey: String
   
@@ -23,13 +23,12 @@ final class ThreadService: ThreadServiceProtocol {
     self.apikey = apikey
   }
   
-  func getThread(uid: String) async throws -> Threadd {
+  func getCarrier(code: String) async throws -> Carrier {
 
-    let response = try await client.getThread(query: .init(
+    let response = try await client.getCarrier(query: .init(
         apikey: apikey,
-        uid: uid
+        code: code
     ))
-    print(response)
     return try response.ok.body.json
   }
 }

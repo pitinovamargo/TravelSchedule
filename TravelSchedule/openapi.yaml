@@ -63,6 +63,12 @@ paths:
       summary: Расписание рейсов между станциями
       operationId: getSearch
       parameters:
+      - name: apikey
+        in: query
+        description: API key
+        required: true
+        schema:
+          type: string
       - name: from
         in: query
         description: станция отправления
@@ -84,12 +90,6 @@ paths:
       - name: lang
         in: query
         description: язык
-        required: false
-        schema:
-          type: string
-      - name: apikey
-        in: query
-        description: API key
         required: false
         schema:
           type: string
