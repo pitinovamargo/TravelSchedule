@@ -30,7 +30,7 @@ struct TravelScheduleApp: App {
             serverURL: try Servers.server1(),
             transport: URLSessionTransport()
         )
-        let key = ""
+        let key = "be2379d2-f005-46e5-ac6b-e0ecd14ad366"
         
         // Получаем список ближайших станций
         let nearestStationsService = NearestStationsService(
