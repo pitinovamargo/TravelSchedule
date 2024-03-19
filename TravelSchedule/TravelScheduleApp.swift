@@ -73,7 +73,9 @@ struct TravelScheduleApp: App {
         )
         
         Task {
-            let thread = try await threadService.getThread(uid: "092S_0_2")
+            let search = try await searchService.getSearch(from: "c146", to: "c213")
+            guard let uid = search.segments?.first?.thread?.uid else { fatalError() }
+            let thread = try await threadService.getThread(uid: uid)
             print("Thread: \(thread)")
         }
         
