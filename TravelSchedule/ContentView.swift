@@ -9,13 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            ZStack {
+                Color.white.edgesIgnoringSafeArea(.top)
+                Text("Расписание")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+            }
+            .tabItem {
+                Image("TabSchedule").renderingMode(.template)
+            }
+            ZStack {
+                Color.white.edgesIgnoringSafeArea(.top)
+                Text("Настройки")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+            }
+            .tabItem {
+                Image("TabSettings").renderingMode(.template)
+            }
         }
-        .padding()
     }
 }
 
