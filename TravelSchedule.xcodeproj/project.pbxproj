@@ -26,6 +26,7 @@
 		64873DB22BA7577E0092550F /* CarrierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64873DB12BA7577E0092550F /* CarrierService.swift */; };
 		64873DB52BA7583B0092550F /* StationsListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64873DB42BA7583B0092550F /* StationsListService.swift */; };
 		64873DB72BA758BB0092550F /* CopyrightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64873DB62BA758BB0092550F /* CopyrightService.swift */; };
+		64D86C2A2BC9D1DE00DB786E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64D86C292BC9D1DE00DB786E /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		64873DB12BA7577E0092550F /* CarrierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrierService.swift; sourceTree = "<group>"; };
 		64873DB42BA7583B0092550F /* StationsListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsListService.swift; sourceTree = "<group>"; };
 		64873DB62BA758BB0092550F /* CopyrightService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightService.swift; sourceTree = "<group>"; };
+		64D86C292BC9D1DE00DB786E /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		64D86C2C2BC9D32300DB786E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,7 @@
 		6443AF0A2BA118EA00FB66B3 /* TravelSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				64D86C2C2BC9D32300DB786E /* Info.plist */,
 				6443AF0B2BA118EA00FB66B3 /* TravelScheduleApp.swift */,
 				645435EB2BA11DBD00F7D519 /* NearestStationsService.swift */,
 				64873DA82BA751B70092550F /* SearchService.swift */,
@@ -133,6 +137,7 @@
 				645435E92BA11CE700F7D519 /* openapi-generator-config.yaml */,
 				6443AF0F2BA118ED00FB66B3 /* Assets.xcassets */,
 				6443AF142BA118ED00FB66B3 /* TravelSchedule.entitlements */,
+				64D86C292BC9D1DE00DB786E /* Launch Screen.storyboard */,
 				6443AF112BA118ED00FB66B3 /* Preview Content */,
 			);
 			path = TravelSchedule;
@@ -280,6 +285,7 @@
 				645435E82BA11BDE00F7D519 /* openapi.yaml in Resources */,
 				645435EA2BA11CE700F7D519 /* openapi-generator-config.yaml in Resources */,
 				6443AF132BA118ED00FB66B3 /* Preview Assets.xcassets in Resources */,
+				64D86C2A2BC9D1DE00DB786E /* Launch Screen.storyboard in Resources */,
 				6443AF102BA118ED00FB66B3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,7 +493,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TravelSchedule/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -520,7 +528,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TravelSchedule/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
