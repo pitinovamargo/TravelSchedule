@@ -9,25 +9,34 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView {
-            ZStack {
-                Color.white.edgesIgnoringSafeArea(.top)
-                Text("Расписание")
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
+        VStack {
+            TabView {
+                VStack{
+                    ZStack {
+                        Color.white.edgesIgnoringSafeArea(.top)
+                        Text("Расписание")
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                    }
+                    Divider()
+                }
+                .tabItem {
+                    Image("TabSchedule").renderingMode(.template)
+                }
+                VStack {
+                    ZStack {
+                        Color.white.edgesIgnoringSafeArea(.top)
+                        Text("Настройки")
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                    }
+                    Divider()
+                }
+                .tabItem {
+                    Image("TabSettings").renderingMode(.template)
+                }
             }
-            .tabItem {
-                Image("TabSchedule").renderingMode(.template)
-            }
-            ZStack {
-                Color.white.edgesIgnoringSafeArea(.top)
-                Text("Настройки")
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
-            }
-            .tabItem {
-                Image("TabSettings").renderingMode(.template)
-            }
+            .frame(maxHeight: .infinity)
         }
     }
 }
