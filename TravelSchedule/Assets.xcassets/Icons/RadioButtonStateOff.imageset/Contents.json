@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "RadioButtonStateOff.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Property 1=Radio Button, State=Off@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Property 1=Radio Button, State=Off@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
