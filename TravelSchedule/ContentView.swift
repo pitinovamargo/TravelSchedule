@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isFeatureEnabled = false
-    
+    @State private var isToggleOn = false
     
     var body: some View {
         VStack {
@@ -31,23 +30,28 @@ struct ContentView: View {
                         Color.white.edgesIgnoringSafeArea(.top)
                         VStack {
                             HStack {
-                                Toggle("Темная тема", isOn: $isFeatureEnabled)
-                                    .padding()
+                                Toggle(isOn: $isToggleOn) {
+                                    Text("Темная тема")
+                                }
+                                .tint(.blueUni)
+                                .padding()
                             }
-                            
                             HStack {
                                 Button(action: forvard) {
                                     Text("Пользовательское соглашение")
+                                    Spacer()
                                     Image("Chevron")
                                 }
+                                .padding()
                             }
-                            
-                            Text("Приложение использует API «Яндекс.Расписания»")
-                                .font(.system(size: 12))
-                            Text("Версия 1.0 (beta)")
-                                .font(.system(size: 12))
+                            Spacer()
                         }
                     }
+                    Text("Приложение использует API «Яндекс.Расписания»")
+                        .font(.system(size: 12))
+                    Text("Версия 1.0 (beta)")
+                        .font(.system(size: 12))
+                        .padding()
                     Divider()
                 }
                 .tabItem {
