@@ -19,7 +19,7 @@ struct ContentView: View {
                 VStack(spacing: 44) {
                     HStack(spacing: 32) {
                         Spacer()
-                        HStack(spacing: 12) {
+                        HStack(spacing: 16) {
                             ForEach(0..<4, id: \.self) { _ in
                                 ZStack(alignment: .bottom) {
                                     Image("Stories1")
@@ -49,7 +49,7 @@ struct ContentView: View {
                                 VStack(spacing: 0) {
                                     TextField("Откуда", text: $fromText)
                                         .padding(.horizontal, 16)
-                                        .padding(.vertical, 8)
+                                        .frame(height: 48)
                                         .background(Color.whiteUni)
                                         .clipShape(
                                             UnevenRoundedRectangle(
@@ -61,7 +61,7 @@ struct ContentView: View {
                                         )
                                     TextField("Куда", text: $toText)
                                         .padding(.horizontal, 16)
-                                        .padding(.vertical, 8)
+                                        .frame(height: 48)
                                         .background(Color.whiteUni)
                                         .clipShape(
                                             UnevenRoundedRectangle(
@@ -75,7 +75,7 @@ struct ContentView: View {
                                 Button(action: changeDirection) {
                                     Image("СhangeButton")
                                 }
-                                .padding()
+                                .padding(.leading, 7)
                             }
                             .padding(16)
                             .background(Color.blueUni)
