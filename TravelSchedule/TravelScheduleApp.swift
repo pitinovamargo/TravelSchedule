@@ -19,9 +19,12 @@ struct TravelScheduleApp: App {
 //        }
     }
     
+    @AppStorage("isDarkModeOn") private var isDarkModeOn = UserDefaults.standard.bool(forKey: "isDarkModeOn")
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(isDarkModeOn: $isDarkModeOn)
+                .preferredColorScheme(isDarkModeOn ? .dark : .light) // Установка темной темы
         }
     }
     

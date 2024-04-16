@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isToggleOn = false
+    @Binding var isDarkModeOn: Bool // Привязка к переменной из другого файла
+    
     @State private var fromText = ""
     @State private var toText = ""
     
@@ -41,7 +43,7 @@ struct ContentView: View {
                             }
                         }
                     }
-                    .padding(.horizontal)
+                    .padding(.leading, 16)
                     
                     VStack {
                         ZStack {
@@ -85,7 +87,6 @@ struct ContentView: View {
                     .padding(.horizontal, 16)
                     
                     
-                    
                     Spacer()
                     Divider()
                 }
@@ -95,7 +96,7 @@ struct ContentView: View {
                 // вторая вкладка таббара
                 VStack {
                     ZStack {
-                        Color.whiteDayNight.edgesIgnoringSafeArea(.top)
+                        Color.whiteDayNight.edgesIgnoringSafeArea(.all)
                         VStack {
                             HStack {
                                 Toggle(isOn: $isToggleOn) {
@@ -103,6 +104,10 @@ struct ContentView: View {
                                 }
                                 .tint(.blueUni)
                                 .padding()
+                                .onChange(of: isToggleOn) { newValue in
+                                    // Обработка изменения состояния Toggle
+                                    isDarkModeOn = newValue // Включение темной темы
+                                }
                             }
                             HStack {
                                 Button(action: forvard) {
@@ -111,6 +116,7 @@ struct ContentView: View {
                                     Image("Chevron")
                                 }
                                 .padding()
+                                .tint(.blackDayNight)
                             }
                             Spacer()
                         }
@@ -140,5 +146,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(isDarkModeOn: .constant(false))
 }
