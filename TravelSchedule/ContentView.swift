@@ -90,13 +90,15 @@ struct ContentView: View {
                     Spacer()
                     Divider()
                 }
+                .background(Color.whiteDayNight)
                 .tabItem {
-                    Image("TabSchedule").renderingMode(.template)
-                }
+                                    Image("TabSchedule")
+                                        .renderingMode(.template)
+                                        .foregroundColor(isDarkModeOn ? .blackNight : .blackDay)
+                                }
                 // вторая вкладка таббара
                 VStack {
                     ZStack {
-                        Color.whiteDayNight.edgesIgnoringSafeArea(.all)
                         VStack {
                             HStack {
                                 Toggle(isOn: $isToggleOn) {
@@ -128,6 +130,7 @@ struct ContentView: View {
                         .padding()
                     Divider()
                 }
+                .background(Color.whiteDayNight)
                 .tabItem {
                     Image("TabSettings").renderingMode(.template)
                 }
