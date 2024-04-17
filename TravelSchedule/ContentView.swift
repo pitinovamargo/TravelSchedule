@@ -53,6 +53,7 @@ struct ContentView: View {
                                         .padding(.horizontal, 16)
                                         .frame(height: 48)
                                         .background(Color.whiteUni)
+                                        .foregroundColor(Color.grayUni)
                                         .clipShape(
                                             UnevenRoundedRectangle(
                                                 topLeadingRadius: 20,
@@ -65,6 +66,7 @@ struct ContentView: View {
                                         .padding(.horizontal, 16)
                                         .frame(height: 48)
                                         .background(Color.whiteUni)
+                                        .foregroundColor(Color.grayUni)
                                         .clipShape(
                                             UnevenRoundedRectangle(
                                                 topLeadingRadius: 0,
@@ -92,7 +94,9 @@ struct ContentView: View {
                 }
                 .background(Color.whiteDayNight)
                 .tabItem {
-                    Image("TabSchedule").renderingMode(.template)
+                    Image("TabSchedule")
+                        .renderingMode(.template)
+                        .foregroundColor(.accentColor)
                 }
                 // вторая вкладка таббара
                 VStack {
@@ -107,6 +111,7 @@ struct ContentView: View {
                                 .onChange(of: isToggleOn) { newValue in
                                     // Обработка изменения состояния Toggle
                                     isDarkModeOn = newValue // Включение темной темы
+                                    UserDefaults.standard.set(newValue, forKey: "isDarkModeOn") // Обновление значения в AppStorage
                                 }
                             }
                             HStack {
@@ -130,7 +135,8 @@ struct ContentView: View {
                 }
                 .background(Color.whiteDayNight)
                 .tabItem {
-                    Image("TabSettings").renderingMode(.template)
+                    Image("TabSettings")
+                        .renderingMode(.template)
                 }
             }
             .frame(maxHeight: .infinity)
