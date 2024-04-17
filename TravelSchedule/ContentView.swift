@@ -92,10 +92,8 @@ struct ContentView: View {
                 }
                 .background(Color.whiteDayNight)
                 .tabItem {
-                                    Image("TabSchedule")
-                                        .renderingMode(.template)
-                                        .foregroundColor(isDarkModeOn ? .blackNight : .blackDay)
-                                }
+                    Image("TabSchedule").renderingMode(.template)
+                }
                 // вторая вкладка таббара
                 VStack {
                     ZStack {
